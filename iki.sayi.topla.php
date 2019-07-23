@@ -4,20 +4,36 @@
 
 <h2>2 SAYI TOPLAMA</h2>
 
-<form method="get">
+<?php if( !isset( $_GET["sayi1"] ) ) { ?>
 
-  1. Sayıyı Giriniz:
-  <input type="text" name="sayi1" value="" placeholder="Sayı giriniz">
-  <br><br />
-  2. Sayıyı Giriniz:
-  <input type="text" name="sayi2" value="" placeholder="Sayı giriniz">
-  <br><br>
+    <form method="get">
 
-  <input type="submit" value="Gönder">
+      1. Sayıyı Giriniz:
+      <input type="text" name="sayi1" value="" placeholder="Sayı giriniz">
+      <br><br />
+      2. Sayıyı Giriniz:
+      <input type="text" name="sayi2" value="" placeholder="Sayı giriniz">
+      <br><br>
 
-</form>
+      <input type="submit" value="Gönder">
 
-<p>iki sayıyı da girip GÖNDER düğmesine basarak toplam aldırabilirsiniz.</p>
+    </form>
+
+    <p>iki sayıyı da girip GÖNDER düğmesine basarak toplam aldırabilirsiniz.</p>
+
+<?php } // if( isset( $_GET["sayi1"] ) ) { ?>
+
+
+<?php
+  if( isset( $_GET["sayi1"]  ) ) {
+    $A = $_GET["sayi1"];
+    $B = $_GET["sayi2"];
+    $Sonuc = $A + $B;
+    echo "<h1>SONUÇ: $A + $B = $Sonuc</h1>";
+    echo "<a href='?'>Yeni İşlem...</a>";
+  }
+?>
+
 
 </body>
 </html>
