@@ -1,20 +1,26 @@
 <h1>TXT Dosyasından Okunan Kişiler</h1>
 <?php
+/*
+  $str = "Hasan;Çiçek;İstanbul";
+  $arrKisi = explode(";", $str);
 
-$str = "Hasan;Çiçek;İstanbul";
-$arrKisi = explode(";", $str);
+  echo "ADI: {$arrKisi[0]}<br />";
+  echo "SOYADI: {$arrKisi[1]}<br />";
+  echo "ŞEHİR: {$arrKisi[2]}<br />";
 
-echo "ADI: {$arrKisi[0]}<br />";
-echo "SOYADI: {$arrKisi[1]}<br />";
-echo "ŞEHİR: {$arrKisi[2]}<br />";
-
-die("");
+  echo "<hr />"; // Öğrenme aşaması bitti..
+*/
 
 $dosya = "kisiler.txt";
 
 $arrSatirlar = file($dosya);
 
-print_r($arrSatirlar[1]);
+foreach ($arrSatirlar as $key => $value) {
+  $Kisi    = $value;
+  $arrKisi = explode(";", $Kisi);
+  echo "ADI:" . $arrKisi[0] . "<br />";
+}
+
 
 
 ?>
