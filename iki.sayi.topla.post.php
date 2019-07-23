@@ -2,11 +2,11 @@
 <html>
 <body>
 
-<h2>2 SAYI TOPLAMA</h2>
+<h2>2 SAYI TOPLAMA - POST örneği</h2>
 
-<?php if( !isset( $_GET["sayi1"] ) ) { ?>
+<?php if( !isset( $_POST["sayi1"] ) ) { ?>
 
-    <form method="get">
+    <form method="post">
 
       1. Sayıyı Giriniz:
       <input type="text" name="sayi1" value="" placeholder="Sayı giriniz">
@@ -25,9 +25,9 @@
 
 
 <?php
-  if( isset( $_GET["sayi1"]  ) ) {
-    $A = $_GET["sayi1"];
-    $B = $_GET["sayi2"];
+  if( isset( $_POST["sayi1"]  ) ) {
+    $A = $_POST["sayi1"];
+    $B = $_POST["sayi2"];
     $Sonuc = $A + $B;
     echo "<h1>SONUÇ: $A + $B = $Sonuc</h1>";
     echo "<a href='?'>Yeni İşlem...</a>";
