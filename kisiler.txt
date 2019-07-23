@@ -1,0 +1,3 @@
+Nuri;Akman;Ankara
+Hasan;Çiçek;İstanbul
+Ali;Yıldız;Kayseri
