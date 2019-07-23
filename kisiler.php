@@ -13,12 +13,12 @@ $arrSatirlar = file($dosya);
 
 foreach ($arrSatirlar as $key => $value) {
   $Kisi    = $value;
-  $arrKisi = explode(";", $Kisi);
+  list($AD, $SOYAD, $SEHIR) = explode(";", $Kisi);
   echo
     "<tr>
-      <td>{$arrKisi[0]}</td>
-      <td>{$arrKisi[1]}</td>
-      <td>{$arrKisi[2]}</td>
+      <td>$AD</td>
+      <td>$SOYAD</td>
+      <td>$SEHIR</td>
     </tr>";
 }
 ?>
