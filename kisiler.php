@@ -10,6 +10,7 @@
 <?php
 $dosya = "kisiler.txt";
 $arrSatirlar = file($dosya);
+sort($arrSatirlar);
 
 foreach ($arrSatirlar as $key => $value) {
   $Kisi    = $value;
