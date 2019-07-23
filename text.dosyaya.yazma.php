@@ -20,6 +20,16 @@
       </p>
     </form>
 
+<?php
+
+  if( isset( $_POST["ad"]) ) {
+    $isim = $_POST["ad"] . ";" . $_POST["soyad"];
+    echo $isim;
+    file_put_contents("isimler.txt", $isim);
+  }
+
+?>
+
 
   </body>
 </html>
