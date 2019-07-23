@@ -21,7 +21,7 @@
 
     <p>iki sayıyı da girip GÖNDER düğmesine basarak toplam aldırabilirsiniz.</p>
 
-<?php } // if( isset( $_GET["sayi1"] ) ) { ?>
+<?php } // Formun Gösterilmesi ?>
 
 
 <?php
