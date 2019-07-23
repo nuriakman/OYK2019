@@ -2,19 +2,22 @@
 <html>
 <body>
 
-<h2>HTML Forms</h2>
+<h2>2 SAYI TOPLAMA</h2>
 
-<form action="/action_page.php">
-  First name:<br>
-  <input type="text" name="firstname" value="Mickey">
-  <br>
-  Last name:<br>
-  <input type="text" name="lastname" value="Mouse">
+<form method="get">
+
+  1. Sayıyı Giriniz:
+  <input type="text" name="sayi1" value="" placeholder="Sayı giriniz">
+  <br><br />
+  2. Sayıyı Giriniz:
+  <input type="text" name="sayi2" value="" placeholder="Sayı giriniz">
   <br><br>
-  <input type="submit" value="Submit">
+
+  <input type="submit" value="Gönder">
+
 </form>
 
-<p>If you click the "Submit" button, the form-data will be sent to a page called "/action_page.php".</p>
+<p>iki sayıyı da girip GÖNDER düğmesine basarak toplam aldırabilirsiniz.</p>
 
 </body>
 </html>
