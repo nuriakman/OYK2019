@@ -1,3 +1,6 @@
+<?php
+  @session_start();
+?>
 <h1>Eğitmen Girişi</h1>
 <form method="post">
   Kullanıcı Adınız: <input type="text" name="user" value="">
@@ -10,9 +13,11 @@
 <?php
   if( isset( $_POST["user"] )) {
     if( $_POST["user"] == "linux" and $_POST["pass"] == "sudo" ) {
-      include("sorular.php");
+      $_SESSION["GirisBasarili"] = 1;
+      echo "<a href='sorular.php'>Sorular sayfasından devam edebilirsiniz...</a>";
     } else {
       echo "Giriş hatalı!";
+      $_SESSION["GirisBasarili"] = 0;
     }
   }
 ?>

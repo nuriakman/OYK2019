@@ -1,3 +1,8 @@
+<?php
+  @session_start();
+  if($_SESSION["GirisBasarili"] <> 1) die("Yetkili değilsiniz...");
+?>
+
 <h1>Bitirme Sınavı Soruları</h1>
 
 <ul>
