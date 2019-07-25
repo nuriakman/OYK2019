@@ -21,6 +21,30 @@ $db = mysqli_connect($servername, $username, $password, $dbname);
 if (!$db) { die("Hata oluştu: " . mysqli_connect_error()); }
 //echo "Bağlantı tamam!";
 
+
+###### ŞEHİR ADLARI İÇİN COMBO HAZIRLANMASI
+  $SQL   = "SELECT DISTINCT il FROM referandum ORDER BY il";
+  $rows  = mysqli_query($db, $SQL);
+  $iller ="";
+  while($row = mysqli_fetch_assoc($rows)) {
+      $iller .= sprintf(
+                "<option value='%s'>%s</option> \n",
+                $row["il"], $row["il"]
+              );
+  }
+?>
+
+
+
+<form method="get">
+  Lütfen şehir seçiniz:
+  <select name="sehir" onchange="this.form.submit()">
+    <?php echo $iller; ?>
+  </select>
+  <input type="submit" value="Getir!">
+</form>
+
+<?php
 #### ADIM 2
 #### ADIM 2
 #### ADIM 2
@@ -35,8 +59,7 @@ $rows  = mysqli_query($db, $SQL);
 #### ADIM 3
 $KayitSayisi = mysqli_num_rows($rows);
 if ($KayitSayisi == 0) {
-  echo "Veri bulunamadı !";
-  die();
+  // echo "Veri bulunamadı !"; die();
 }
 
 
@@ -54,30 +77,32 @@ $TabloBasi = "
 ";
 $TabloSonu = "</table>";
 
-echo "<h1>$SEHIR Referandum Sonuçları</h1>";
-echo $TabloBasi;
+if( isset( $_GET["sehir"])) { // Şehir seçimi yapılmış
 
-while($row = mysqli_fetch_assoc($rows)) {
+      echo "<h1>$SEHIR Referandum Sonuçları</h1>";
+      echo $TabloBasi;
 
-    echo sprintf("
-          <tr>
-            <td>%s</td>
-            <td>%s</td>
-            <td>%s</td>
-            <td>%s</td>
-          </tr>",
-          $row["il"],
-          $row["ilce"],
-          $row["evet"],
-          $row["hayir"]
-        );
+      while($row = mysqli_fetch_assoc($rows)) {
 
-} // while sonu
+          echo sprintf("
+                <tr>
+                  <td>%s</td>
+                  <td>%s</td>
+                  <td>%s</td>
+                  <td>%s</td>
+                </tr>",
+                $row["il"],
+                $row["ilce"],
+                $row["evet"],
+                $row["hayir"]
+              );
 
-echo $TabloSonu;
+      } // while sonu
 
-echo "<p>Toplam $KayitSayisi kayıt bulundu.</p>";
+      echo $TabloSonu;
 
+      echo "<p>Toplam $KayitSayisi kayıt bulundu.</p>";
+} // Şehir seçimi yapılmış
 
 
 mysqli_close($db);
