@@ -1,18 +1,7 @@
 <?php
-$servername = "localhost";
-$username   = "root";
-$password   = "root";
-$dbname     = "bilgiler";
+include("db.php");
 
-// Veritabanı bağlantısının oluşturulması
-$db = mysqli_connect($servername, $username, $password, $dbname);
-// Varsa, bağlantı hatasının ekrana yazdırılarak programın sonlandırılması
-if (!$db) { die("Hata oluştu: " . mysqli_connect_error()); }
-//echo "Bağlantı tamam!";
-
-
-if (isset( $_POST["adi"] )) {
-  // Form POST edilmiş...
+if (isset( $_POST["adi"] )) {  // Form POST edilmiş...
 
   // Önce EKLEME için SQL hazırlayalım...
   $SQL = sprintf("
@@ -24,10 +13,12 @@ if (isset( $_POST["adi"] )) {
         sehir  = '%s'  ",
   $_POST["adi"], $_POST["soyadi"], $_POST["sehir"]);
 
+  // SQL komutunu MySQL veritabanı üzerinde çalıştır!
   $rows  = mysqli_query($db, $SQL);
 
   echo "<h4>Kayıt eklendi...</h4>";
-}
+
+}  // Form POST edilmiş...
 
 ?>
 
