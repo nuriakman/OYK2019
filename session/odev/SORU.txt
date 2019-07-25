@@ -1,0 +1,18 @@
+2 Adet kullanıcı var:
+ahmet/123/Yetki Seviyesi:1
+mehmet/789/Yetki Seviyesi:2
+
+Sistemdeki dosyalar:
+index.php, menu1.php, menu2.php, 
+oturumukapat.php, login.php
+
+Login sonrasında, index.php karşımıza gelmeli.
+yetki seviyesi 1 ise menu1.php
+yetki seviyesi 2 ise menu2.php
+dosyalarının içeriği ekrana yazdırılmalı.
+
+Herkesin sadece yetkili olduğu menu1 veya menu2 dosyalarını görmesi sağlanmalı
+
+menu1.php dosyası içeriği: BURASI MENU1 EKRANIDIR
+menu2.php dosyası içeriği: BURASI MENU2 EKRANIDIR
+Menu ekranlarının sonunda OTURUMU KAPAT linki olmalı
