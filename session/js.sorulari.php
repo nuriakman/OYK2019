@@ -1,6 +1,5 @@
 <?php
-  @session_start();
-  if($_SESSION["GirisBasarili"] <> 1) die("Yetkili değilsiniz...");
+  require("giris.kontrol.php");
 ?>
 <h1>JAVASCRIPT Sınıfı Soruları</h1>
 
