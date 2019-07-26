@@ -53,11 +53,11 @@ if (isset( $_POST["adisoyadi"] )) {  // Form POST edilmiş...
 </h3>
 
 <form method="post">
-  Adı Soyadı:<input type="text" name="adisoyadi" value="<?php echo $_POST["adisoyadi"];?>">
+  Adı Soyadı:<input required type="text" name="adisoyadi" value="<?php echo $_POST["adisoyadi"];?>">
   <br /><br />
-  Parola:<input type="password" name="parola" value="<?php echo $_POST["parola"];?>">
+  Parola:<input required type="password" name="parola" value="<?php echo $_POST["parola"];?>">
   <br /><br />
-  Tür:<select name='tur'>
+  Tür:<select required name='tur'>
     <option value="">SEÇİNİZ</option>
     <option value="M" <?php if($_POST["tur"]== "M") echo "selected"; ?>>Müşteri</option>
     <option value="E" <?php if($_POST["tur"]== "E") echo "selected"; ?>>Esnaf</option>
