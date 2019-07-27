@@ -24,7 +24,7 @@ if (isset( $_POST["adisoyadi"] )) {  // Form POST edilmiş...
     $HataMesaji[] = "ePosta girilmemiş !";
   }
 
-  if( $_POST["parola"] <> $_POST["parola1"]) {
+  if( $_POST["parola"] <> $_POST["parolatekrar"]) {
     // Parola tekrarı aynı değil!
     $HataMesaji[] = "Parola tekrarı aynı değil !";
   }
@@ -87,7 +87,7 @@ if (isset( $_POST["adisoyadi"] )) {  // Form POST edilmiş...
   <br /><br />
   Parola:<input required type="password" name="parola" value="">
   <br /><br />
-  Parola Tekrar:<input required type="password" name="parola1" value="">
+  Parola Tekrar:<input required type="password" name="parolatekrar" value="">
   <br /><br />
   Tür:<select required name='tur'>
     <option value="">SEÇİNİZ</option>
