@@ -1,7 +1,6 @@
 <?php
 include("db.php");
-
-$TUZ = "ğŞı.Ç65,Ş!4%743l"; // md5 fonksiyonunda tekil çıktı üretebilmek için
+include("sabitler.php");
 
 if (isset( $_POST["adisoyadi"] )) {  // Form POST edilmiş...
 
@@ -20,16 +19,43 @@ if (isset( $_POST["adisoyadi"] )) {  // Form POST edilmiş...
     $HataMesaji[] = "Ad soyad girilmemiş !";
   }
 
+  if($_POST["eposta"] == "" ) {
+    // ePosta yazılmamış
+    $HataMesaji[] = "ePosta girilmemiş !";
+  }
+
+  if( $_POST["parola"] <> $_POST["parola1"]) {
+    // Parola tekrarı aynı değil!
+    $HataMesaji[] = "Parola tekrarı aynı değil !";
+  }
+
+  if( strlen($_POST["parola"]) < 8 ) {
+    // Parola 8 karakterden küçük girilmiş
+    $HataMesaji[] = "Parola en az 8 karakter olmalıdır !";
+  }
+
+  // Daha önce bu ePosta ile yapılmış kayıt var mı?
+  $SQL = "SELECT * FROM kullanicilar WHERE eposta = '{$_POST["eposta"]}' ";
+  $rows  = mysqli_query($db, $SQL);
+
+  // Eğer, bu SQL için cevap alıyorsak, bu eposta daha önce kullanılmıştır
+  $KayitSayisi = mysqli_num_rows($rows);
+  if ($KayitSayisi <> 0) {
+    // Bu ePosta daha önce kullanılmış
+    $HataMesaji[] = "Bu ePosta daha önce kullanılmış! (Bu ePosta zaten kayıtlı!)";
+  }
+
   if( !isset($HataMesaji) ) {
     // Önce EKLEME için SQL hazırlayalım...
     $SQL = sprintf("
         INSERT INTO
           kullanicilar
         SET
+          eposta     = '%s',
           adisoyadi = '%s',
           parola    = '%s',
           tur       = '%s'  ",
-    $_POST["adisoyadi"], md5($_POST["parola"] . $TUZ), $_POST["tur"]);
+    $_POST["eposta"], $_POST["adisoyadi"], md5($_POST["parola"] . $TUZ), $_POST["tur"]);
 
     // SQL komutunu MySQL veritabanı üzerinde çalıştır!
     $rows  = mysqli_query($db, $SQL);
@@ -54,10 +80,14 @@ if (isset( $_POST["adisoyadi"] )) {  // Form POST edilmiş...
   ?>
 </h3>
 
-<form method="post">
+<form method="post" autocomplete="off">
+  ePosta:<input required type="text" name="eposta" value="<?php echo $_POST["eposta"];?>">
+  <br /><br />
   Adı Soyadı:<input required type="text" name="adisoyadi" value="<?php echo $_POST["adisoyadi"];?>">
   <br /><br />
-  Parola:<input required type="password" name="parola" value="<?php echo $_POST["parola"];?>">
+  Parola:<input required type="password" name="parola" value="">
+  <br /><br />
+  Parola Tekrar:<input required type="password" name="parola1" value="">
   <br /><br />
   Tür:<select required name='tur'>
     <option value="">SEÇİNİZ</option>
