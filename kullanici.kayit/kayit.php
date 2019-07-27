@@ -1,6 +1,8 @@
 <?php
 include("db.php");
 
+$TUZ = "ğŞı.Ç65,Ş!4%743l"; // md5 fonksiyonunda tekil çıktı üretebilmek için
+
 if (isset( $_POST["adisoyadi"] )) {  // Form POST edilmiş...
 
   if($_POST["tur"] == "" ) {
@@ -27,7 +29,7 @@ if (isset( $_POST["adisoyadi"] )) {  // Form POST edilmiş...
           adisoyadi = '%s',
           parola    = '%s',
           tur       = '%s'  ",
-    $_POST["adisoyadi"], $_POST["parola"], $_POST["tur"]);
+    $_POST["adisoyadi"], md5($_POST["parola"] . $TUZ), $_POST["tur"]);
 
     // SQL komutunu MySQL veritabanı üzerinde çalıştır!
     $rows  = mysqli_query($db, $SQL);
