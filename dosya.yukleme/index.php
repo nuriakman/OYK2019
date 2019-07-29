@@ -23,6 +23,21 @@ if(isset( $_FILES["DOSYA"] )) { // Formda, bir dosya seçilerek GÖNDER düğmes
     $Yuklenebilir = 0;
   }
 
+  // Yüklenen dosya için DOSYA BOYUTU kontrolü
+  if( $_FILES["DOSYA"]["size"] > 150000 ) { // 150000 byte = Yaklaşık 150 Kb
+    // Dosyanın Boyutu büyük!
+    echo "DOSYA BOYUTU FAZLA! DAHA KÜÇÜK BİR DOSYA YÜKLEYİN";
+    $Yuklenebilir = 0;
+  }
+
+  // Resim dosyasının genişlik ve yüksekliğini kontrol etme
+  list($GENISLIK, $YUKSEKLIK) = getimagesize($_FILES["DOSYA"]["tmp_name"]);
+  if( $GENISLIK > 1024 OR $YUKSEKLIK > 768 ) {
+    // Resim dosyasınınn genişliği uygun değiL!
+    echo "Resim dosyası max 1024px X 768px ölçüsünde olabilir !!";
+    $Yuklenebilir = 0;
+  }
+
   if($Yuklenebilir == 1) { // Yüklenmesi uygunsa
 
     // Yükleme işlemini bitirelim...
