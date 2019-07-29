@@ -7,8 +7,22 @@ FROM
   esanlam
 GROUP BY
   kelime1, kelime2
+-- Normal çalışmada 124,652 kayıt geldi.
+-- Grop by yapınca: 124,140 kayıt geldi.  512 Adet mükerrer kayıt var.
+``` --
+
+# MÜKERRER OLANLAR HANGİLERİ?
+Not: Sadece mükerrer olabilecek sahalar çekilmelidir.
+```SQL
+SELECT
+  kelime1, kelime2
+FROM
+  esanlam
+GROUP BY
+  kelime1, kelime2
 HAVING
   COUNT(*) > 1
+-- Bu sorgu sonucu 512 kayıt geldi
  ```
 
 # ÇİFT KAYITLARIN ID BİLGİSİNİN ÇEKİLMESİ:
@@ -34,6 +48,6 @@ DELETE FROM esanlam
       SELECT MAX(id) AS id FROM esanlam
         GROUP BY kelime1, kelime2
         HAVING COUNT(*) > 1
-    )
+    ) AS SILINECEKLER
  )
 ```
