@@ -10,7 +10,7 @@
   <h1>Ajax İle İlçeleri Doldurma</h1>
 
   <select name="SEHIR" id="SEHIR" onchange="IlceleriDoldur()">
-    <option value="">SEÇİNİZ</option>
+    <option value="">*** SEÇİNİZ ***</option>
     <option value="ANKARA">ANKARA</option>
     <option value="İSTANBUL">İSTANBUL</option>
   </select>
@@ -18,12 +18,10 @@
   <select name="ILCE" id="ILCE">
   </select>
 
-
 <script type="text/javascript">
     function IlceleriDoldur() {
-      $.getJSON("ajax.ilceleri.doldur.php", "sehir=" + $("#SEHIR").val(), function(data) {
-        $("#ILCE").html(data.ILCELER);
-      });
+      $("#ILCE").load("ajax.ilceleri.doldur.php",     // Çağrılacak sayfa
+                      "sehir=" + $("#SEHIR").val() );  // Çağrılırken kullanılacak değer 
     } // IlceleriDoldur()
 </script>
 

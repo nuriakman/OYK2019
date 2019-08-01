@@ -21,9 +21,10 @@
 
 <script type="text/javascript">
     function IlceleriDoldur() {
-      $.getJSON("ajax.ilceleri.doldur.php", "sehir=" + $("#SEHIR").val(), function(data) {
-        $("#ILCE option").remove();
-        $.each(data.ILCELER, function(key, val) {
+      $.getJSON("ajax.ilceleri.doldur.php", "sehir=" + $("#SEHIR").val(), function(CagrilanSayfadanGelenJSONFormatliCevap) {
+        $("#ILCE option").remove(); // İLÇE COMBO'sunun içini boşalt
+        // alert("Şehir değişkeninin değeri: " + CagrilanSayfadanGelenJSONFormatliCevap.SEHIR);
+        $.each(CagrilanSayfadanGelenJSONFormatliCevap.ILCELER, function(key, val) {
             $("#ILCE").append($("<option />").val(key).text(val));
         });
       });

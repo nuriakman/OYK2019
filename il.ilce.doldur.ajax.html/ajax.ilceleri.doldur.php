@@ -1,7 +1,4 @@
 <?php
-    //$SONUC["ISLEM_SONUCU"] = "Mesaj alındı...";
-    //$SONUC["kayit_id"]     = "123444";
-    //$SONUC["PARAMETRELER"] = print_r($_GET, true);
 
     if($_GET["sehir"]=="ANKARA") {
         $arrIlceler[12] = "Altındağ";
@@ -15,12 +12,9 @@
         $arrIlceler[3] = "Üsküdar";
     }
 
-    $Cevap = "";
+    $SONUC = "<option value=''>*** SEÇİNİZ ***</option>\n";
     foreach ($arrIlceler as $key => $value) {
-      $Cevap .= "<option value='$key'>$value</option>";
+      $SONUC .= "<option value='$key'>$value</option>\n";
     }
 
-    $SONUC["ILCELER"] = $Cevap;
-
-    header('Content-Type: application/json');
-    echo json_encode($SONUC);
+    echo $SONUC;
