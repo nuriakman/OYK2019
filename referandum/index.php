@@ -21,6 +21,9 @@ $db = mysqli_connect($servername, $username, $password, $dbname);
 if (!$db) { die("Hata oluştu: " . mysqli_connect_error()); }
 //echo "Bağlantı tamam!";
 
+// Oluşabilecek Türkçe karakter gösterimi sorunlarını giderelim...
+mysqli_query($db, "set names 'utf8'");
+
 
 ###### ŞEHİR ADLARI İÇİN COMBO HAZIRLANMASI
   $SQL   = "SELECT DISTINCT il FROM referandum ORDER BY il";

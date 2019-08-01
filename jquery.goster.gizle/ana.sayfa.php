@@ -19,16 +19,28 @@
 	</div>
 
 
-	<h4>jQuery LOAD ile yükleme</h4>
+	
 	<p>
+		<h2 style="display:inline;">jQuery LOAD ile yükleme:</h2>
 		<a href="#" onclick="HaberiGosterLOAD(1)">Zeki Müren'i Anma Gecesi</a>
 		<a href="#" onclick="HaberiGosterLOAD(2)">Duman konseri</a>
 	<p>
 
-	<h4>jQuery AJAX ile yükleme</h4>
 	<p>
+		<h2 style="display:inline;">jQuery AJAX ile yükleme:</h2>
 		<a href="#" onclick="HaberiGosterAJAX(1)">Zeki Müren'i Anma Gecesi</a>
 		<a href="#" onclick="HaberiGosterAJAX(2)">Duman konseri</a>
+	<p>
+
+	<h2>jQuery AJAX ile Veritabanından Veri Çekme</h2>
+	<p>
+		<a href="#" onclick="IlceleriGoster(6)">Ankara'nın İlçeleri</a>
+		<a href="#" onclick="IlceleriGoster(34)">İstanbul'un İlçeleri</a>
+	<p>
+
+	<h2>TÜM ŞEHİRLER</h2>
+	<p>
+		<?php require("sehirleri.listele.php"); ?>
 	<p>
 
 	<div id="HABER_SAHASI" style="width: 100%; border: 4px solid black;">
@@ -44,6 +56,21 @@
 
 	<script type="text/javascript">
 
+
+		function IlceleriGoster( ILKODU ) {
+			
+		   YUKLENECEK_SAYFA = "veritabanindan.ilceleri.goster.php?ilkodu=" + ILKODU;
+
+			// Belirtilen sayfayı jQuery'nin AJAX metodunu kullanarak getirelimm
+		   $.ajax({
+		       url: YUKLENECEK_SAYFA,
+		       type: 'GET',
+		       dataType: 'html',
+		       success: function(data){
+		         $('#HABER_SAHASI').html(data);
+		       }
+		   });
+   		}
 
 		function HaberiGosterAJAX( SAYFANO ) {
 			
