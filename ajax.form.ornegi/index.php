@@ -33,7 +33,7 @@
                             <div class="col-md-6">
                                 <div class="form-group">
                                     Adınız *
-                                    <input type="text" name="adi" class="form-control" placeholder="Adınızı giriniz *" requiredXX  oninvalid="this.setCustomValidity('Please Enter valid email')" oninput="setCustomValidity('')">
+                                    <input type="text" name="adi" class="form-control" placeholder="Adınızı giriniz *" required  oninvalid="this.setCustomValidity('Lütfen ADINIZI giriniz.')" oninput="setCustomValidity('')">
                                 </div>
                             </div>
                             <div class="col-md-6">
