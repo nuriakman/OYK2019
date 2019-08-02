@@ -27,7 +27,6 @@
 
                 <form id="MesajGondermeFormu" method="post" action="mesaj.gonder.php">
 
-                    <div class="controls">
 
                         <div class="row">
                             <div class="col-md-6">
@@ -74,7 +73,7 @@
                                 <input type="button" class="btn btn-success btn-send" value="Mesajımı Gönder!" onclick="MesajFormunuGonder()">
                             </div>
                         </div>
-                    </div>
+
 
                 </form>
 
