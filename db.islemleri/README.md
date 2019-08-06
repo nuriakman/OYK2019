@@ -1,34 +1,37 @@
-# Kurulum Notları
-
-- ornek-db.php dosyasını db.php olarak kopyalayın.
-- db.php dosyası içindeki ilgili giriş bilgilerini güncelleyin.
-
 # Database İşlem Örnekleri İçeren Proje
 
 ## Kullanılan komutlar
-- include("sayfaadi.php);
-- isset();
-- sprintf
-- INSERT INTO
-- mysqli_query
-- echo
-- $_POST
-- $_GET
-- die();
-- DELETE FROM
-- mysqli_fetch_assoc();
-- UPDATE
-- mysqli_real_escape_string();
+
+| PHP KOMUTU  |KULLANIMI   |
+|---|---|
+| `isset();`  | Varlık Kontrolü yapmayı sağlar. |
+| `sprintf`  |  Biçemli bir dizge döndürür. |
+| `include();`  | Betiğe dahil edilecek dosyalar önce belirtilen dizinde aranır, eğer bir dizin belirtilmemişse include_path yönergesinde belirtilen yollarda aranır.  |
+| `echo`  | Girdi olarak verilen yazıyı, ekranda veya gönderildiği dosyada parametrelerle belirtilen şekilde görüntüler.  |
+| `die();` |  Php'de belirli bir yerden sonra php kodlarının çalışmaması için _die_ yada exit kullanılmaktadır. |
+| `$_POST` | Bu metod URL’ de görünmesini istemediğimiz veriler olduğunda, dosya yükleyeceğimiz zaman, querystring’in çok büyük olduğu durumlarda kullanılır.  |
+| `$_GET` | Bu metod ile yapılan istekler tarayıcının adres satırında görünür. Sadece belirli boyutta veri gönderileceği zaman kullanılır.  |
+
+| SQL KOMUTU  |KULLANIMI   |
+|---|---|
+| `mysqli_query` |  SQL sorgusunu çalıştırma komutudur |
+| `mysqli_fetch_assoc();`  | SQL sonucunu ilişkisel dizi olarak almak için kullanılır  |
+| `UPDATE`  | Veritabanında bulunan verileri değiştirmek-güncellemek amacıyla kullanılan bir deyimdir.  |
+| `DELETE `| Bu ifade tablomuzda bulunan kayıtları silmek için kullanılır.  |
+| `mysqli_real_escape_string();` | SQL sorgusunda bulunacak tehlikeli karakterlerin kaçış karakterleri ile güvenlihale getirilmesini sağlar  |
+| `INSERT INTO` | SQL'de veritabanına kayıt eklemek için bu deyimini kullanırız.  |
+
+
 ## insert.php *sayfası*
 - Amacımız sayfadaki formdan gelen verileri veri tabanına aktarma
 - insert.php sayfamız ilk gösterilecek sayfamızdır.
-- ```<?php include("db.php"); ``` ile başlar. Db sayfamızın içinde veri tabanına bağlantı için komutlar bulunur. Bu sayfayı ayrı oluşturup çağımamızın sebebi tamamen güvenliktir. **db.php** sayfasında veri tabanına bağlantı için parolamız bulunur.
-- Bir sonraki adımda `İNSERT İNTO` komutu ile veritabanımıza kulanıcının formdan girdiği verileri ekliyoruz. Yalnız bunu kullanıcının formu doldurma şartı ile koşullandırıyoruz. `if (isset( $_POST["adi"] )) { ...}`komutu ile eğer kullanıcının adı post edilmişse içindekileri çalıştır komutu veriyoruz.
+- ```<?php include("db.php"); ``` ile başlar. Db sayfamızın içinde veri tabanına bağlantı için komutlar bulunur. Bu sayfayı ayrı oluşturup çağırmamızın sebebi tamamen güvenliktir. **db.php** sayfasında veri tabanına bağlantı için parolamız bulunur.
+- Bir sonraki adımda `İNSERT İNTO` komutu ile veritabanımıza kullanıcının formdan girdiği verileri ekliyoruz. Yalnız bunu kullanıcının formu doldurma şartı ile koşullandırıyoruz. `if (isset( $_POST["adi"] )) { ...}`komutu ile eğer kullanıcının adı post edilmişse içindekileri çalıştır komutu veriyoruz.
 
 ## delete.php *sayfası*
 
 - Bu sayfada amacımız kullanıcın veritabanındaki bilgilerini silmek
-- Öncelikler kullanıcın idsine göre silinecek verileri gösteririz.
+- Öncelikle kullanıcın id'sine göre silinecek verileri gösteririz.
 - Silme işlemini zorlaştırmamız gerekmektedir bunun sebebi istenmeyen veri kaybını önlemek. Bunun için bu sayfadaki şartımız kullanıcın **SİL** yazarak bunu onaylamasıdır.
 
 ## list.php *sayfası*
@@ -46,7 +49,7 @@
 ## show.php *sayfası*
 
 - Sayfanın amacı gelen id'ye göre seçilen kullanıcının bilgilerini göstermektir.
-- 
+-
 ## update.php *sayfası*
 - Sayfanın amacı formdan gelen verileri gösterip üzerinde değişiklik yapıp güncellemeye imkan vermesidir.
 - Bunun için `UPDATE` komutu kullanılır.
@@ -55,4 +58,3 @@
 
 - Sayfanın amacı sql injectionı anlamak.
 - [Bunun ile ilgili detaylı bilgiyi burada bulabilirsiniz.](https://github.com/nuriakman/PHP-Egitimi/blob/master/konular/giris.konulari.mysql.md)
-
