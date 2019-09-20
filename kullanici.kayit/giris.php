@@ -2,6 +2,7 @@
 require("db.php");
 include("sabitler.php");
 
+if(isset($_POST["adisoyadi"])){ // dosyayı çalıştırdığımızda çıkan error message post edilme şartına bağlandı.
 $PAROLA = md5( $_POST["parola"] . $TUZ );
 
 $SQL = "SELECT
@@ -21,7 +22,7 @@ $SQL = "SELECT
     echo "Kullanıcı adı veya parola hatalı!";
   }
 
-
+} // end of if
 
 ?>
 <h1>Kullanıcı Girişi</h1>
